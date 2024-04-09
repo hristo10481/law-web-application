@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+    <title>Адв. кантора Георгиеви</title>
+    <link rel="icon" type="image/x-icon" href="/uploads/1.png">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+        body {
+            font-family: "Nunito", sans-serif;
+            padding-top: 100px;
+            padding-bottom: 153px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url("https://kosmospublishers.com/wp-content/uploads/2018/10/hd-attorney-law-firm-wallpaper-1080p.jpg") no-repeat center center / cover;
+            color: #fff;
+        }
+
+        .form-group label {
+            color: #fff;
+        }
+
+        .form-group, .buttons button, .alert, .alert-info {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .buttons, .form-horizontal .form-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button, .form-horizontal .btn-primary {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border: 2px solid #fff;
+            color: black;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .buttons button:hover, .form-horizontal .btn-primary:hover {
+            background-color: #ffffff;
+            color: #000;
+        }
+
+        .alert-info {
+    display: none; /* Добавено за да гарантира, че е скрит по подразбиране */
+    background-color: #FF6347;
+    border-color: #FF6347;
+    color: #fff;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+              
+        
+        <!-- edit form column -->
+        <div class="col-md-9 personal-info">
+            <div class="alert alert-info alert-dismissable">
+                <a class="panel-close close" data-dismiss="alert">×</a> 
+                
+            </div>
+        </div>
+
+    <div class="col-md-6 col-md-offset-3">
+        <h1 style="text-align: center;">Моят профил</h1>
+        <hr>
+        <!-- Profile Form -->
+        <form class="form-horizontal" action="/profile" method="POST">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Име:</label>
+                <div class="col-lg-8">
+                    <input class="form-control" type="text" name="first_name" value="<%= user.first_name %>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Фамилия:</label>
+                <div class="col-lg-8">
+                    <input class="form-control" type="text" name="last_name" value="<%= user.last_name %>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Имейл:</label>
+                <div class="col-lg-8">
+                    <input class="form-control" type="text" name="email" value="<%= user.email %>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Телефонен номер:</label>
+                <div class="col-lg-8">
+                    <input class="form-control" type="text" name="phone_number" value="<%= user.phone_number %>">
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label class="col-md-3 control-label">Потребителско име: </label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="username" value="<%= user.username %>">
+                </div>
+            </div> -->
+            <div class="buttons">
+                <input type="submit" id="saveChangesButton" class="btn btn-outline-dark" value="Запази промените" style="margin: 10px; padding: 10px 20px; text-decoration: none; font-size: 1.3rem; border: 2px solid #fff; color: black; border-radius: 5px;">
+                <a href="/" class="btn btn-default" style="margin: 10px; padding: 10px 20px; text-decoration: none; font-size: 1.3rem; border: 2px solid #fff; color: black; border-radius: 5px;">Начало</a>
+            </div>
+        </form>
+        <hr>
+        <!-- Links to other pages... -->
+    </div>
+</div>
+
+<script>
+    
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.querySelector("form");
+    var errorContainer = document.querySelector(".alert-info");
+
+    // Първоначално скриване на alert box-a, ако няма съобщения
+    if (!errorContainer.innerHTML.trim()) {
+        errorContainer.style.display = 'none';
+    }
+
+    form.onsubmit = function(e) {
+        var firstName = document.querySelector("[name='first_name']").value;
+var lastName = document.querySelector("[name='last_name']").value;
+var email = document.querySelector("[name='email']").value;
+var phoneNumber = document.querySelector("[name='phone_number']").value;
+        
+        // Изчистване на предишни съобщения за грешки
+        errorContainer.innerHTML = ''; 
+        var hasErrors = false;
+
+        // Функция за добавяне на съобщения за грешка
+        function addErrorMessage(message) {
+            var p = document.createElement("p");
+            p.textContent = message;
+            errorContainer.appendChild(p);
+            hasErrors = true;
+        }
+
+        // Проверки за валидация
+        if (!/^[A-Za-zА-Яа-я]+$/.test(firstName) || !/^[A-Za-zА-Яа-я]+$/.test(lastName)) {
+            addErrorMessage("Името и фамилията трябва да съдържат само букви.");
+        }
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            addErrorMessage("Моля, въведете валиден имейл адрес.");
+        }
+        if (!/^\+359\d{9}$/.test(phoneNumber)) {
+            addErrorMessage("Телефонният номер трябва да започва с +359 и да следват 9 цифри.");
+        }
+
+        // Показване или скриване на контейнера за грешки
+        errorContainer.style.display = hasErrors ? 'block' : 'none';
+
+        if (hasErrors) {
+            e.preventDefault(); // Спиране на изпращането на формата
+        }
+    };
+});
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var elements = document.querySelectorAll(".form-group, .buttons button, .alert");
+        setTimeout(function() {
+            elements.forEach(function(element, index) {
+                setTimeout(function() {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }, index * 200);
+            });
+        }, 500);
+    });
+</script>
+</body>
+</html>

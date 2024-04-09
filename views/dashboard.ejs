@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Администраторски Панел</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Make sure to include jQuery before your custom scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<style>
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+body {
+    font-family: "Nunito", sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://kosmospublishers.com/wp-content/uploads/2018/10/hd-attorney-law-firm-wallpaper-1080p.jpg") no-repeat center center / cover;
+    color: #fff;
+    margin-bottom: 400px;
+    
+}
+
+.table, .modal-content {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+}
+
+.table th, .table td {
+    border-color: #dee2e6; 
+}
+
+.btn-primary, .btn-danger { 
+    border: none;
+}
+
+.btn-primary {
+    background-color: #4CAF50; /* Примерен зелен цвят */
+}
+
+.btn-danger {
+    background-color: #f44336; /* Примерен червен цвят */
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Администраторски Панел</h2>
+        <div class="mb-3">
+            <a href="/" class="btn btn-light"><i class="fas fa-arrow-left"></i> Начална страница</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Потребителско Име</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="userList">
+               
+            </tbody>
+        </table>
+
+            <!-- Edit User Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editUserModalLabel">Редактиране на потребител</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editUserForm">
+            <input type="hidden" id="editUserId">
+            <div class="form-group">
+              <label for="editUsername">Потребителско Име</label>
+              <input type="text" class="form-control" id="editUsername">
+            </div>
+            <div class="form-group">
+              <label for="editEmail">Email</label>
+              <input type="email" class="form-control" id="editEmail">
+            </div>
+            <div class="form-group">
+                <label for="editRole">Роля</label>
+                <input type="role" class="form-control" id="editRole">
+              </div>
+            <button type="submit" class="btn btn-primary">Запази промените</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+     $(document).ready(function() {
+    fetchUsers();
+
+    // Fetch users and populate the table
+    function fetchUsers() {
+        $.get('/admin/users', function(users) {
+            $('#userList').empty();
+            users.forEach(function(user) {
+                $('#userList').append(`
+                    <tr>
+                        <td>${user.id}</td>
+                        
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>${user.role}</td>
+                        <td>
+                            <button class="btn btn-primary edit-btn" data-user-id="${user.id}" data-username="${user.username}" data-email="${user.email}"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger delete-btn" data-user-id="${user.id}"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                `);
+            });
+        });
+    }
+
+    // Delete user
+    $(document).on('click', '.delete-btn', function() {
+        const userId = $(this).data('user-id');
+        if(confirm('Сигурни ли сте, че искате да изтриете този потребител?')) {
+            $.ajax({
+                url: '/users/' + userId,
+                type: 'DELETE',
+                success: function(result) {
+                    fetchUsers();
+                }
+            });
+        }
+    });
+
+    // Edit user
+    $(document).on('click', '.edit-btn', function() {
+        const userId = $(this).data('user-id');
+        const username = $(this).data('username');
+        const email = $(this).data('email');
+        const role = $(this).data('role');
+
+        // Populate modal fields with current user data
+        $('#editUserId').val(userId);
+        $('#editUsername').val(username);
+        $('#editEmail').val(email);
+        $('#editRole').val(role);
+
+
+        // Show the modal
+        $('#editUserModal').modal('show');
+    });
+
+    // Handle the form submission for editing a user
+    $('#editUserForm').on('submit', function(e) {
+        e.preventDefault();
+
+        const userId = $('#editUserId').val();
+        const username = $('#editUsername').val();
+        const email = $('#editEmail').val();
+        const role = $('#editRole').val();
+
+        $.ajax({
+            url: '/users/' + userId,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({ username, email, role}),
+            success: function(result) {
+                $('#editUserModal').modal('hide');
+                fetchUsers();
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

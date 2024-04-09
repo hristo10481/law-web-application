@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Адв. кантора Георгиеви</title>
+    <link rel="icon" type="image/x-icon" href="/uploads/1.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+        body {
+            font-family: "Nunito", sans-serif;
+            padding-top: 100px;
+            padding-bottom: 153px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url("https://kosmospublishers.com/wp-content/uploads/2018/10/hd-attorney-law-firm-wallpaper-1080p.jpg") no-repeat center center / cover;
+            color: #fff;
+        }
+
+        .form-group,
+        .buttons button {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .form-group label {
+            color: #fff;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            border: 2px solid #fff;
+            color: black;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+
+        .buttons button:hover {
+            background-color: #ffffff;
+            color: #000;
+        }
+
+        .alert-danger {
+            background-color: #FF6347;
+            border-color: #FF6347;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1 style="text-align: center; font-family: Nunito, sans-serif;" data-aos="fade-down">Регистрация</h1>
+        <% if (message.length > 0) { %>
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Oops!</strong> <%= message %>.
+            </div>
+        <% } %>
+	
+        <form action="/signup" method="post" >
+            <div class="form-group"  data-aos="fade-up">
+                <label>Потребителско име</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="form-group"  data-aos="fade-up">
+                <label>Имейл:</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group"  data-aos="fade-up">
+                <label>Парола</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="buttons" >
+                <button  data-aos="fade-up" type="submit" class="btn btn-outline-dark">Регистрация</button>
+            </div>
+        </form>
+        <hr  data-aos="fade-up">
+        <p  data-aos="fade-up" style="color: #fff;">Имаш акаунт? <a href="/login" style="color: #41a9a8;">Влез от ТУК</a></p>
+        <p   data-aos="fade-up" style="color: #fff;">Или се върни в <a href="/" style="color: #41a9a8;">началото</a>.</p>
+    </div>
+</div>
+
+<script>
+    AOS.init({
+      duration: 800, // дължината на анимацията в милисекунди
+      easing: 'slide', // тип на анимацията
+      once: false, // анимация при всяко скролиране
+    });
+  </script>
+</body>
+</html>

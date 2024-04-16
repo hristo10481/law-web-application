@@ -2,10 +2,6 @@ const Document = require('../models/docs');
 const fs = require('fs');
 const path = require('path');
 
-
-// Във файлът на вашите контролери, например `docsController.js`
-
-// В контролера, който управлява маршрута за вашата страница
 exports.getDocuments = async (req, res) => {
     try {
         const documents = await Document.findAll();
@@ -16,8 +12,6 @@ exports.getDocuments = async (req, res) => {
     }
 };
 
-
-// Функция за качване на документ
 // Функция за качване на документ
 exports.uploadDocument = async (req, res) => {
     try {
@@ -42,7 +36,6 @@ exports.uploadDocument = async (req, res) => {
         res.status(500).send({ message: "Error uploading document", error });
     }
 };
-
 
 // Функция за изтегляне на документ
 exports.downloadDocument = async (req, res) => {

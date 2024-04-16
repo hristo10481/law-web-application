@@ -1,7 +1,6 @@
 // controllers/userController.js
 
-const User = require('../models/usersTableModel'); // Модел за потребителя, предполага се, че вече е създаден
-
+const User = require('../models/usersTableModel');
 
 const userController = {
     // Получаване на всички потребители

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('../config/db'); // Предполага се, че имате настроена база данни
+const db = require('../config/db'); 
 
 const Document = db.define('document', {
     id: {
@@ -9,19 +9,19 @@ const Document = db.define('document', {
     },
     name: {
         type: Sequelize.STRING,
-        allowNull: true // Полето е задължително
+        allowNull: true 
     },
     path: {
         type: Sequelize.STRING,
-        allowNull: true // Полето е задължително
+        allowNull: true 
     },
     imagePath: {
         type: Sequelize.STRING,
-        allowNull: true // Позволява NULL стойности, в случай че документът не е свързан с изображение
+        allowNull: true 
     },
     description: {
         type: Sequelize.TEXT,
-        allowNull: true // Описание на документа, може да бъде NULL
+        allowNull: true 
     }
 }, {
     tableName: 'documents',

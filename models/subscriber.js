@@ -2,7 +2,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../config/db.js");
 const Subscriber = sequelize.define('Subscriber', {
-  // Моделни атрибути
+  
   email: {
     type: DataTypes.STRING,
     allowNull: true,
@@ -13,8 +13,8 @@ const Subscriber = sequelize.define('Subscriber', {
   }
 }, {
 
-    tableName: 'subscribers', // Изрично посочваме името на таблицата
-        timestamps: false // Изключваме автоматичното създаване на полетата "createdAt" и "updatedAt"
+    tableName: 'subscribers', 
+        timestamps: false 
 });
 
 module.exports = Subscriber;

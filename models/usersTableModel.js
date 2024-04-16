@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db.js"); // Уверете се, че този път е правилен
+const sequelize = require("../config/db.js"); 
 
 const User = sequelize.define("User", {
   id: {
@@ -31,7 +31,7 @@ const User = sequelize.define("User", {
   }
 }, {
   tableName: 'users',
-  timestamps: false // Ако искате да имате createdAt и updatedAt
+  timestamps: false 
 });
 
 module.exports = User;

@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,873 +14,1028 @@
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-rnsiCuoLlL0z+frkTR5Cc3iKf39B6P/KMZUt8xWBaT/E0en1hO4N2cExyTj5gCUy" crossorigin="anonymous"> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<style>
+  <style>
+    .content {
+      max-width: 1000px;
+      text-align: center;
+    }
 
-/* Add this style to create a container for the content */
-.content {
-  max-width: 1000px; /* Adjust the maximum width as needed */
-  text-align: center;
-}
+    .content p.logo {
+      margin-bottom: 10px;
+    }
 
-/* Add this style to adjust the spacing between the logo, text, and buttons */
-.content p.logo {
-  margin-bottom: 10px;
-}
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-/* Add this style for button animation */
-.buttons a {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-size: 1.3rem;
-  border: 2px solid #fff;
-  color: #fff;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Add this style for hover effect on buttons */
-.buttons a:hover {
-  background-color: #fff;
-  color: #000;
-}
+    .buttons a:hover {
+      background-color: #fff;
+      color: #000;
+    }
 
 
 
 
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
-/***********************/
-/* RESET CSS */
-/***********************/
 
-* {
-  box-sizing: border-box;
-  font-family: "Nunito", sans-serif;
-  margin: 0;
-  padding: 0;
-}
+    * {
+      box-sizing: border-box;
+      font-family: "Nunito", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-html {
-  /* 
+    html {
+      /* 
     font-size: 10px; 
-    10px / 16px = 0.625 = 62.5%
-    Percentage of user's browser font-size setting
   */
-  font-size: 62.5%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
+      font-size: 62.5%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-a:link,
-a:visited {
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: all 0.3s;
-}
+    a:link,
+    a:visited {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
 
-/* HELPER CLASSES */
-.center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-/***********************/
-/* NAVIGATION MENU */
-/***********************/
+    .overlay {
+      z-index: 9;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
 
-/* OVERLAY */
-.overlay {
-  z-index: 9;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  background-color: rgba(0, 0, 0, 0.7);
-}
+    .overlay-slide-right {
+      transition: all 0.4s ease-in-out;
+      transform: translateX(0);
+    }
 
-.overlay-slide-right {
-  transition: all 0.4s ease-in-out;
-  transform: translateX(0);
-}
+    .overlay-slide-left {
+      transition: all 0.8s ease-in-out;
+      transform: translateX(-100%);
+    }
 
-.overlay-slide-left {
-  transition: all 0.8s ease-in-out;
-  transform: translateX(-100%);
-}
+    nav ul {
+      height: 100vh;
+      height: 100svh;
+      list-style: none;
+    }
 
-/* NAV MENU ITEMS */
-nav ul {
-  height: 100vh;
-  height: 100svh;
-  list-style: none;
-}
+    nav ul li {
+      height: 20%;
+    }
 
-nav ul li {
-  height: 20%;
-}
+    nav li:nth-of-type(1) {
+      background-color: #626059;
+    }
 
-nav li:nth-of-type(1) {
-  background-color: #626059;
-}
+    nav li:nth-of-type(2) {
+      background-color: #9d5543;
+    }
 
-nav li:nth-of-type(2) {
-  background-color: #9d5543;
-}
+    nav li:nth-of-type(3) {
+      background-color: #3d405b;
+    }
 
-nav li:nth-of-type(3) {
-  background-color: #3d405b;
-}
+    nav li:nth-of-type(4) {
+      background-color: #5a7d6c;
+    }
 
-nav li:nth-of-type(4) {
-  background-color: #5a7d6c;
-}
+    nav li:nth-of-type(5) {
+      background-color: #917a56;
+    }
 
-nav li:nth-of-type(5) {
-  background-color: #917a56;
-}
+    nav li a {
+      letter-spacing: 0.4rem;
+      font-size: 2rem;
+    }
 
-nav li a {
-  letter-spacing: 0.4rem;
-  font-size: 2rem;
-}
+    nav li a:hover,
+    nav li a:active {
+      transform: scale(1.2);
+    }
 
-nav li a:hover,
-nav li a:active {
-  transform: scale(1.2);
-}
-
-/***********************/
-/* NAV SLIDE IN ANIMATION */
-/***********************/
-
-.slide-in-1 {
-  animation: slide-in 0.4s linear 0.2s both;
-}
-
-.slide-in-2 {
-  animation: slide-in 0.4s linear 0.4s both;
-}
-
-.slide-in-3 {
-  animation: slide-in 0.4s linear 0.6s both;
-}
-
-.slide-in-4 {
-  animation: slide-in 0.4s linear 0.8s both;
-}
-
-.slide-in-5 {
-  animation: slide-in 0.4s linear 1s both;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-/***********************/
-/* NAV SLIDE OUT ANIMATION */
-/***********************/
-
-.slide-out-1 {
-  animation: slide-out 0.3s linear 0.5s both;
-}
-
-.slide-out-2 {
-  animation: slide-out 0.3s linear 0.4s both;
-}
-
-.slide-out-3 {
-  animation: slide-out 0.3s linear 0.3s both;
-}
-
-.slide-out-4 {
-  animation: slide-out 0.3s linear 0.2s both;
-}
-
-.slide-out-5 {
-  animation: slide-out 0.3s linear 0.1s both;
-}
-
-@keyframes slide-out {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-/***********************/
-/* HAMBURGER MENU ANIMATION */
-/***********************/
-
-.hamburger-menu {
-  position: fixed;
-  top: 1rem;
-  right: 2rem;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.menu-bar1,
-.menu-bar2,
-.menu-bar3 {
-  width: 3.5rem;
-  height: 0.2rem;
-  background-color: #fff;
-  margin: 0.8rem 0;
-  transition: 0.4s;
-}
-
-.menu-bar2 {
-  width: 2rem;
-  margin-left: auto;
-}
-
-/* ROTATE FIRST BAR */
-.active .menu-bar1 {
-  transform: rotate(-45deg) translate(-0.7rem, 0.8rem);
-}
-
-/* FADE OUT SECOND BAR */
-.active .menu-bar2 {
-  opacity: 0;
-}
-
-/* ROTATE LAST BAR */
-.active .menu-bar3 {
-  transform: rotate(45deg) translate(-0.6rem, -0.8rem);
-}
-
-/***********************/
-/* SECTION */
-/***********************/
-
-section {
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  text-align: center;
-  color: #fff;
-}
-
-
-
-
-.logo {
   
-  position: fixed;
-  z-index: 2;
-  top: 1.5rem;
-  left: 1.5rem;
-  font-size: 2rem;
-  letter-spacing: 0.3rem;
-}
-
-h1 {
-  font-size: 4rem;
-  background-color: rgb(0, 0, 0, 0.6);
-  padding: 0.5rem 1rem;
-}
-
-section#home {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://kosmospublishers.com/wp-content/uploads/2018/10/hd-attorney-law-firm-wallpaper-1080p.jpg")
-      no-repeat center center / cover;
-      
-      
-}
-
-section#about {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://images.unsplash.com/photo-1589216532372-1c2a367900d9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxhd3xlbnwwfHwwfHx8MA%3D%3D")
-      no-repeat center center / cover;
-}
-
-section#docs {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://c1.wallpaperflare.com/preview/590/397/119/law-books-legal-court.jpg")
-      no-repeat center center / cover;
-}
-
-section#newsletter-and-news {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80")
-      no-repeat center center / cover;
-}
-
-section#contact {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80")
-      no-repeat center center / cover;
-}
-
-/**************************/
-/* MEDIA QUERY */
-/**************************/
-
-/* BELOW 832px (Tablets) */
-@media (max-width: 52em) {
-  html {
-    /* 8px / 16px = 0.5 = 50% */
-    font-size: 50%;
-  }
-}
-
-/* BELOW 600px (Phones) */
-@media (max-width: 37em) {
-  .hamburger-menu {
-    top: 0.5rem;
-    right: 1rem;
-  }
-  .logo {
-    top: 1rem;
-    left: 1rem;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-}
-
-
-
-
-
-/***********************/
-/* LOGIN BUTTON */
-/***********************/
-
-#login-icon {
-  position: absolute;
-  margin-top: 100px;
-  text-align: right;
-  top: 1.5rem; /* Adjust the top position as needed */
-  left: 2rem; /* Adjust the left position as needed */
-  font-size: 1.5rem; /* Adjust the font size as needed */
-  color: #fff; /* Adjust the color as needed */
-  cursor: pointer;
-}
-
-#login-icon a {
-  color: inherit;
-  text-decoration: none;
-}
-
-#login-icon a:hover {
-  text-decoration: underline;
-}
-
 
+    .slide-in-1 {
+      animation: slide-in 0.4s linear 0.2s both;
+    }
+
+    .slide-in-2 {
+      animation: slide-in 0.4s linear 0.4s both;
+    }
+
+    .slide-in-3 {
+      animation: slide-in 0.4s linear 0.6s both;
+    }
+
+    .slide-in-4 {
+      animation: slide-in 0.4s linear 0.8s both;
+    }
+
+    .slide-in-5 {
+      animation: slide-in 0.4s linear 1s both;
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translateX(-100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+
+    .slide-out-1 {
+      animation: slide-out 0.3s linear 0.5s both;
+    }
+
+    .slide-out-2 {
+      animation: slide-out 0.3s linear 0.4s both;
+    }
+
+    .slide-out-3 {
+      animation: slide-out 0.3s linear 0.3s both;
+    }
+
+    .slide-out-4 {
+      animation: slide-out 0.3s linear 0.2s both;
+    }
+
+    .slide-out-5 {
+      animation: slide-out 0.3s linear 0.1s both;
+    }
+
+    @keyframes slide-out {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .hamburger-menu {
+      position: fixed;
+      top: 1rem;
+      right: 2rem;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .menu-bar1,
+    .menu-bar2,
+    .menu-bar3 {
+      width: 3.5rem;
+      height: 0.2rem;
+      background-color: #fff;
+      margin: 0.8rem 0;
+      transition: 0.4s;
+    }
+
+    .menu-bar2 {
+      width: 2rem;
+      margin-left: auto;
+    }
 
+    .active .menu-bar1 {
+      transform: rotate(-45deg) translate(-0.7rem, 0.8rem);
+    }
 
-#contact {
-  background: #f7f7f7; /* Adjust the color to match the screenshot */
-  color: #000; /* Adjust text color as needed */
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
+    .active .menu-bar2 {
+      opacity: 0;
+    }
 
-.contact-info,
-.contact-form {
-  padding: 20px;
-}
+    .active .menu-bar3 {
+      transform: rotate(45deg) translate(-0.6rem, -0.8rem);
+    }
+
+
+    section {
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      text-align: center;
+      color: #fff;
+    }
 
-.contact-info h2,
-.contact-form h2 {
-  margin-bottom: 30px;
-  color: #333; /* Adjust heading color as needed */
-}
-
-.contact-info {
-  background: #fff; /* Set the background to white */
-  border-radius: 8px; /* Round the corners */
-  padding: 40px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow to match the screenshot */
-}
-
-.contact-form {
-  padding-left: 50px; /* Add spacing */
-  /* Align the form to the right side as per the screenshot */
-}
-
-.contact-form form input,
-.contact-form form select,
-.contact-form form textarea {
-  width: 100%; /* Full width */
-  padding: 10px;
-  margin-bottom: 20px; /* Add spacing between form items */
-  border: 1px solid #ccc; /* Add border to match the screenshot */
-  border-radius: 5px; /* Round the corners of form fields */
-}
-
-.contact-form form button {
-  background: #333; /* Adjust to match your button color */
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  /* Position the button to the right as per the screenshot */
-}
-
-.contact-form form button:hover {
-  background: #444; /* Darken the button when hovered */
-}
-
-/* Adjust the grid layout for responsiveness */
-@media (max-width: 767px) {
-  .contact-info,
-  .contact-form {
-    padding: 20px;
-    text-align: center; /* Center the content on smaller screens */
-  }
-
-  .contact-form {
-    padding-left: 20px; /* Reset the padding for mobile */
-    padding-right: 20px;
-  }
-}
-
-.map-container {
-  margin-top: 30px; /* Space above the map */
-}
-
-.map-container iframe {
-  width: 100%; /* Responsive width */
-  border: 0; /* Remove border */
-  height: 300px; /* Fixed height, adjust as necessary */
-  border-radius: 8px; /* Optional: Rounds the corners of the map */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow to the map */
-}
-
-
-.custom-alert-box {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  color: black;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  z-index: 1000; /* Уверете се, че е високо над останалите елементи */
-}
-
-
-
-
-
-
 
 
-
-
-
 
-#newsletter-and-news .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 100px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.newsletter-section, .news-section {
-  flex: 1;
-  margin: 20px;
-}
-
-.news-item {
-  background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-
-#newsletter-form input[type="email"] {
-  padding: 10px;
-  margin-right: -4px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-#newsletter-form button {
-  padding: 10px 20px;
-  background-color: #0056b3;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-#newsletter-form button:hover {
-  background-color: #004494;
-}
-
-@media (max-width: 768px) {
-  #newsletter-and-news .container {
-    flex-direction: column;
-  }
-}
-
-
-
-.modal-content {
-    background-color: #f8f9fa; /* Светъл фон за модала */
-    border-radius: 15px; /* Закръглени ъгли */
-    border: 1px solid #dee2e6; /* Тънка рамка около модала */
-    box-shadow: 0 5px 15px rgba(0,0,0,.5); /* Сянка за 3D ефект */
-}
-
-
-
-.modal-title {
-    font-weight: bold; /* По-дебел шрифт за заглавието */
-}
-
-.modal-body {
-    padding: 20px; /* Повече отстояние около съдържанието */
-}
-
-.modal-footer {
-    border-top: 1px solid #dee2e6; /* Линия над бутоните на модала */
-    background-color: #f8f9fa; /* Светъл фон за футъра */
-}
-
-.btn-secondary {
-    background-color: #007bff; /* Син цвят за бутона */
-    border-color: #007bff; /* Съответстваща рамка на бутона */
-    color: white; /* Бял текст за бутона */
-}
-
-.btn-secondary:hover {
-    background-color: #0056b3; /* По-тъмен син цвят при навеждане */
-    border-color: #0056b3; /* Съответстваща рамка на бутона при навеждане */
-}
-
-
-.modal-body img {
-    width: 100%;
-    margin-bottom: 20px; /* Добавя отстояние отдолу на изображението */
-}
-
-.modal-body p {
-    margin-top: 20px; /* Добавя отстояние отгоре на параграфа */
-}
-
-
-
-#about {
-  background-color: #f7f7f7;
-  padding: 50px 0;
-}
-
-.team-profiles-container {
-  display: flex;
-  justify-content: space-around; /* Разпределете елементите равномерно */
-  margin: 0 auto; /* Центриране на контейнера */
-  max-width: 1200px; /* Максимална ширина на контейнера */
-  padding: 20px 0; /* Добавяне на падинг около контейнера */
-  margin-top: -150px; /* Регулирайте този отстъп за да дигнете снимките нагоре */
-}
-
-
-.profile-item {
-  margin: 120px; /* Разстояние между профилните елементи */
-  text-align: center; /* Центриране на текста */
-}
-
-.profile-image {
-  width: 300px; /* Ширина на снимката */
-  height: 300px; /* Височина на снимката */
-  margin-bottom: 10px; /* Разстояние между снимката и текста отдолу */
-  border-radius: 50%; /* Закръгляне на снимката */
-  overflow: hidden; /* Скриване на излишния контент */
-}
-
-.profile-imagee {
-  width: 300px; /* Ширина на снимката */
-  height: 300px; /* Височина на снимката */
-  margin-bottom: 10px; /* Разстояние между снимката и текста отдолу */
-  border-radius: 50%; /* Закръгляне на снимката */
-  overflow: hidden; /* Скриване на излишния контент */
-}
-
-.profile-image img {
-  width: 100%; /* Снимката да запълва цялото пространство */
-  height: auto; /* Височината да се преоразмерява автоматично */
-}
-
-.profile-imagee img {
-  width: 100%; /* Снимката да запълва цялото пространство */
-  height: auto; /* Височината да се преоразмерява автоматично */
-}
-
-.profile-item h3 {
-  margin-top: 20px;
-  font-size: 1.6rem;
-  color: #ffffff;
-}
-
-.profile-item p {
-  color: #ffffff;
-}
-
-/* Hover effect */
-.profile-item:hover .profile-image {
-  transform: scale(1.1);
-}
-.profile-item:hover .profile-imagee {
-  transform: scale(1.1);
-}
-
-
-
-
-.team-section-header {
-  text-align: center;
-  margin-top: 50px; /* Регулирайте според необходимостта */
-  margin-bottom: 30px; /* Регулирайте според необходимостта */
-}
-
-.team-section-header h2 {
-  display: inline-block;
-  font-size: 2.5rem; /* Размер на шрифта */
-  padding-bottom: 10px; /* Разстояние под текста */
-  position: relative;
-  color: #ffffff; /* Цвета на текста */
-  text-transform: uppercase; /* Главни букви */
-  letter-spacing: 3px; /* Разстояние между буквите */
-}
+    .logo {
 
-.team-section-header h2::after {
-  content: '';
-  width: 100px; /* Дължина на линията */
-  height: 4px; /* Дебелина на линията */
-  background-color: #aeff00; /* Цвета на декоративната линия */
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
+      position: fixed;
+      z-index: 2;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-size: 2rem;
+      letter-spacing: 0.3rem;
+    }
 
-.modal-contentt {
-  background-color: transparent; /* Премахваме фона на модала */
-  border: none; /* Премахваме границата на модала */
-}
+    h1 {
+      font-size: 4rem;
+      background-color: rgb(0, 0, 0, 0.6);
+      padding: 0.5rem 1rem;
+    }
 
-.card {
-  display: flex;
-  align-items: center;
-  background: #f0ece3;
-  border-radius: 15px;
-  overflow: hidden;
-}
+    section#home {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://kosmospublishers.com/wp-content/uploads/2018/10/hd-attorney-law-firm-wallpaper-1080p.jpg") no-repeat center center / cover;
 
-.card-image img {
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  width: 200px; /* Ако е необходимо, коригирайте ширината */
-}
 
-.card-content {
-  padding: 20px;
-  background: #d3c0b6;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  color: #3e3e3e; /* Цвят на текста */
-}
+    }
 
-.card-content h3 {
-  margin-top: 0;
-  font-size: 1.5rem; /* Размер на шрифта на името */
-}
-
-.card-content p {
-  margin: 5px 0; /* Разстояние между редовете */
-}
-
-.contact-info p {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.contact-info p:before {
-  content: '';
-  display: inline-block;
-  margin-right: 10px;
-  /* Следващите икони могат да бъдат добавени с фонтови икони или като изображения, ако са налични */
-}
-
-/* Пример за добавяне на икони с Font Awesome, може да се наложи да включите Font Awesome в HTML ако още не сте го направили */
-.contact-info p:nth-child(1):before {
-  content: '\f0e0'; /* Икона за email */
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-}
-
-.contact-info p:nth-child(2):before {
-  content: '\f095'; /* Икона за телефон */
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-}
-
-.contact-info p:nth-child(3):before {
-  content: '\f2b5'; /* Икона за опит */
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Основни стилове за секцията с документите */
-/* Стилове за секцията с документи */
-.docs-section .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.docs-section h2.section-title {
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 2rem;
-  color: #333;
-}
-
-/* Стилове за грида с документи */
-.documents-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* Стилове за всеки елемент на документа */
-.document-item {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.document-item:hover {
-  transform: translateY(-5px);
-}
-
-.document-image img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 1px solid #ccc;
-}
-
-.document-info {
-  padding: 15px;
-  text-align: center;
-}
-
-.document-info h5 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* Стилове за модалния прозорец */
-.modal-content {
-  background-color: #f8f9fa;
-  border-radius: 5px;
-}
-
-.modal-header, .modal-footer {
-  border: none;
-}
-
-.modal-title {
-  color: #333;
-}
-
-.form-group label {
-  color: #333;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0050a4;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
-.btn-secondary:hover {
-  background-color: #565e64;
-  border-color: #4e555b;
-}
-
-.no-documents {
-  text-align: center;
-  color: #666;
-  margin-top: 20px;
-}
-
-
-/* body, html {
+    section#about {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://images.unsplash.com/photo-1589216532372-1c2a367900d9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxhd3xlbnwwfHwwfHx8MA%3D%3D") no-repeat center center / cover;
+    }
+
+    section#docs {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://c1.wallpaperflare.com/preview/590/397/119/law-books-legal-court.jpg") no-repeat center center / cover;
+    }
+
+    section#newsletter-and-news {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80") no-repeat center center / cover;
+    }
+
+    section#contact {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80") no-repeat center center / cover;
+    }
+
+
+
+    @media (max-width: 52em) {
+      html {
+        font-size: 50%;
+      }
+    }
+
+    @media (max-width: 37em) {
+      .hamburger-menu {
+        top: 0.5rem;
+        right: 1rem;
+      }
+
+      .logo {
+        top: 1rem;
+        left: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+
+
+
+
+
+    #login-icon {
+      position: absolute;
+      margin-top: 100px;
+      text-align: right;
+      top: 1.5rem;
+      /* Adjust the top position as needed */
+      left: 2rem;
+      /* Adjust the left position as needed */
+      font-size: 1.5rem;
+      /* Adjust the font size as needed */
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #login-icon a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #login-icon a:hover {
+      text-decoration: underline;
+    }
+
+
+
+
+    #contact {
+      background: #f7f7f7;
+      /* Adjust the color to match the screenshot */
+      color: #000;
+      /* Adjust text color as needed */
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .contact-info,
+    .contact-form {
+      padding: 20px;
+    }
+
+    .contact-info h2,
+    .contact-form h2 {
+      margin-bottom: 30px;
+      color: #333;
+      /* Adjust heading color as needed */
+    }
+
+    .contact-info {
+      background: #fff;
+      /* Set the background to white */
+      border-radius: 8px;
+      /* Round the corners */
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      /* Add shadow to match the screenshot */
+    }
+
+    .contact-form {
+      padding-left: 50px;
+      /* Add spacing */
+      /* Align the form to the right side as per the screenshot */
+    }
+
+    .contact-form form input,
+    .contact-form form select,
+    .contact-form form textarea {
+      width: 100%;
+      /* Full width */
+      padding: 10px;
+      margin-bottom: 20px;
+      /* Add spacing between form items */
+      border: 1px solid #ccc;
+      /* Add border to match the screenshot */
+      border-radius: 5px;
+      /* Round the corners of form fields */
+    }
+
+    .contact-form form button {
+      background: #333;
+      /* Adjust to match your button color */
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      /* Position the button to the right as per the screenshot */
+    }
+
+    .contact-form form button:hover {
+      background: #444;
+      /* Darken the button when hovered */
+    }
+
+    /* Adjust the grid layout for responsiveness */
+    @media (max-width: 767px) {
+
+      .contact-info,
+      .contact-form {
+        padding: 20px;
+        text-align: center;
+        /* Center the content on smaller screens */
+      }
+
+      .contact-form {
+        padding-left: 20px;
+        /* Reset the padding for mobile */
+        padding-right: 20px;
+      }
+    }
+
+    .map-container {
+      margin-top: 30px;
+      /* Space above the map */
+    }
+
+    .map-container iframe {
+      width: 100%;
+      /* Responsive width */
+      border: 0;
+      /* Remove border */
+      height: 300px;
+      /* Fixed height, adjust as necessary */
+      border-radius: 8px;
+      /* Optional: Rounds the corners of the map */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      /* Optional: Adds shadow to the map */
+    }
+
+
+    .custom-alert-box {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      color: black;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 5px;
+      z-index: 1000;
+      /* Уверете се, че е високо над останалите елементи */
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    #newsletter-and-news .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 100px;
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .newsletter-section,
+    .news-section {
+      flex: 1;
+      margin: 20px;
+    }
+
+    .news-item {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    #newsletter-form input[type="email"] {
+      padding: 10px;
+      margin-right: -4px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #newsletter-form button {
+      padding: 10px 20px;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #newsletter-form button:hover {
+      background-color: #004494;
+    }
+
+    @media (max-width: 768px) {
+      #newsletter-and-news .container {
+        flex-direction: column;
+      }
+    }
+
+
+
+    .modal-content {
+      background-color: #f8f9fa;
+      /* Светъл фон за модала */
+      border-radius: 15px;
+      /* Закръглени ъгли */
+      border: 1px solid #dee2e6;
+      /* Тънка рамка около модала */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+      /* Сянка за 3D ефект */
+    }
+
+
+
+    .modal-title {
+      font-weight: bold;
+      /* По-дебел шрифт за заглавието */
+    }
+
+    .modal-body {
+      padding: 20px;
+      /* Повече отстояние около съдържанието */
+    }
+
+    .modal-footer {
+      border-top: 1px solid #dee2e6;
+      /* Линия над бутоните на модала */
+      background-color: #f8f9fa;
+      /* Светъл фон за футъра */
+    }
+
+    .btn-secondary {
+      background-color: #007bff;
+      /* Син цвят за бутона */
+      border-color: #007bff;
+      /* Съответстваща рамка на бутона */
+      color: white;
+      /* Бял текст за бутона */
+    }
+
+    .btn-secondary:hover {
+      background-color: #0056b3;
+      /* По-тъмен син цвят при навеждане */
+      border-color: #0056b3;
+      /* Съответстваща рамка на бутона при навеждане */
+    }
+
+
+    .modal-body img {
+      width: 100%;
+      margin-bottom: 20px;
+      /* Добавя отстояние отдолу на изображението */
+    }
+
+    .modal-body p {
+      margin-top: 20px;
+      /* Добавя отстояние отгоре на параграфа */
+    }
+
+
+
+    #about {
+      background-color: #f7f7f7;
+      padding: 50px 0;
+    }
+
+    .team-profiles-container {
+      display: flex;
+      justify-content: space-around;
+      /* Разпределете елементите равномерно */
+      margin: 0 auto;
+      /* Центриране на контейнера */
+      max-width: 1200px;
+      /* Максимална ширина на контейнера */
+      padding: 20px 0;
+      /* Добавяне на падинг около контейнера */
+      margin-top: -150px;
+      /* Регулирайте този отстъп за да дигнете снимките нагоре */
+    }
+
+
+    .profile-item {
+      margin: 120px;
+      /* Разстояние между профилните елементи */
+      text-align: center;
+      /* Центриране на текста */
+    }
+
+    .profile-image {
+      width: 300px;
+      /* Ширина на снимката */
+      height: 300px;
+      /* Височина на снимката */
+      margin-bottom: 10px;
+      /* Разстояние между снимката и текста отдолу */
+      border-radius: 50%;
+      /* Закръгляне на снимката */
+      overflow: hidden;
+      /* Скриване на излишния контент */
+    }
+
+    .profile-imagee {
+      width: 300px;
+      /* Ширина на снимката */
+      height: 300px;
+      /* Височина на снимката */
+      margin-bottom: 10px;
+      /* Разстояние между снимката и текста отдолу */
+      border-radius: 50%;
+      /* Закръгляне на снимката */
+      overflow: hidden;
+      /* Скриване на излишния контент */
+    }
+
+    .profile-image img {
+      width: 100%;
+      /* Снимката да запълва цялото пространство */
+      height: auto;
+      /* Височината да се преоразмерява автоматично */
+    }
+
+    .profile-imagee img {
+      width: 100%;
+      /* Снимката да запълва цялото пространство */
+      height: auto;
+      /* Височината да се преоразмерява автоматично */
+    }
+
+    .profile-item h3 {
+      margin-top: 20px;
+      font-size: 1.6rem;
+      color: #ffffff;
+    }
+
+    .profile-item p {
+      color: #ffffff;
+    }
+
+    /* Hover effect */
+    .profile-item:hover .profile-image {
+      transform: scale(1.1);
+    }
+
+    .profile-item:hover .profile-imagee {
+      transform: scale(1.1);
+    }
+
+
+
+
+    .team-section-header {
+      text-align: center;
+      margin-top: 50px;
+      /* Регулирайте според необходимостта */
+      margin-bottom: 30px;
+      /* Регулирайте според необходимостта */
+    }
+
+    .team-section-header h2 {
+      display: inline-block;
+      font-size: 2.5rem;
+      /* Размер на шрифта */
+      padding-bottom: 10px;
+      /* Разстояние под текста */
+      position: relative;
+      color: #ffffff;
+      /* Цвета на текста */
+      text-transform: uppercase;
+      /* Главни букви */
+      letter-spacing: 3px;
+      /* Разстояние между буквите */
+    }
+
+    .team-section-header h2::after {
+      content: '';
+      width: 100px;
+      /* Дължина на линията */
+      height: 4px;
+      /* Дебелина на линията */
+      background-color: #aeff00;
+      /* Цвета на декоративната линия */
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .modal-contentt {
+      background-color: transparent;
+      /* Премахваме фона на модала */
+      border: none;
+      /* Премахваме границата на модала */
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      background: #f0ece3;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      width: 200px;
+      /* Ако е необходимо, коригирайте ширината */
+    }
+
+    .card-content {
+      padding: 20px;
+      background: #d3c0b6;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      color: #3e3e3e;
+      /* Цвят на текста */
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      /* Размер на шрифта на името */
+    }
+
+    .card-content p {
+      margin: 5px 0;
+      /* Разстояние между редовете */
+    }
+
+    .contact-info p {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .contact-info p:before {
+      content: '';
+      display: inline-block;
+      margin-right: 10px;
+      /* Следващите икони могат да бъдат добавени с фонтови икони или като изображения, ако са налични */
+    }
+
+    /* Пример за добавяне на икони с Font Awesome, може да се наложи да включите Font Awesome в HTML ако още не сте го направили */
+    .contact-info p:nth-child(1):before {
+      content: '\f0e0';
+      /* Икона за email */
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+    }
+
+    .contact-info p:nth-child(2):before {
+      content: '\f095';
+      /* Икона за телефон */
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+    }
+
+    .contact-info p:nth-child(3):before {
+      content: '\f2b5';
+      /* Икона за опит */
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Основни стилове за секцията с документите */
+    /* Стилове за секцията с документи */
+    .docs-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .docs-section h2.section-title {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    /* Стилове за грида с документи */
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    /* Стилове за всеки елемент на документа */
+    .document-item {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .document-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .document-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .document-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .document-info h5 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* Стилове за модалния прозорец */
+    .modal-content {
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    }
+
+    .modal-header,
+    .modal-footer {
+      border: none;
+    }
+
+    .modal-title {
+      color: #333;
+    }
+
+    .form-group label {
+      color: #333;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0050a4;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background-color: #565e64;
+      border-color: #4e555b;
+    }
+
+    .no-documents {
+      text-align: center;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    @keyframes pulseAnimation {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #reservationButton {
+      position: fixed;
+      right: 3%;
+      /* Или където желаете да позиционирате бутона */
+      bottom: 10%;
+      /* Или според вашите предпочитания */
+      z-index: 100;
+      /* За да е винаги видим над другите елементи */
+    }
+
+
+    .consultation-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .consultation-modal-content {
+      background-color: #ffffff;
+      margin: 5% auto;
+      /* По-ниска начална позиция */
+      padding: 40px;
+      border-radius: 8px;
+      /* Заоблени ъгли */
+      border: none;
+      /* Без рамка */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Сянка за дълбочина */
+      width: 30%;
+      /* Широчина според екрана */
+      max-width: 500px;
+      /* Максимална широчина */
+    }
+
+    .consultation-close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+
+    .consultation-close:hover,
+    .consultation-close:focus {
+      color: #222222;
+      /* Тъмносиво при навеждане */
+      text-decoration: none;
+    }
+
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="datetime-local"],
+    select {
+      width: 100%;
+      /* Пълна ширина в рамките на формата */
+      padding: 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      /* Заоблени ъгли за полетата */
+      box-sizing: border-box;
+      /* CSS box sizing */
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #4CAF50;
+      /* Зелен фон */
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+      /* По-тъмно зелено при навеждане */
+    }
+
+    .body-no-scroll {
+      overflow: hidden;
+      /* Забранява скролирането */
+      height: 100%;
+      /* Фиксира височината на страницата */
+    }
+
+    /* body, html {
   overflow: hidden;
 } */
-</style>
+  </style>
 
 
 </head>
+
 <body>
   <a href="#" id="back-to-top" title="Назад към началото" style="display: none;">&#8679;</a>
 
@@ -889,631 +1043,784 @@ section#contact {
     <p id="customAlertMessage">Това е персонализирано съобщение.</p>
     <button onclick="closeCustomAlert()">Затвори</button>
   </div>
-<!-- SECTIONS -->
-<section id="home" class="center" >
-  
-  
- 
- 
-   
+  <!-- SECTIONS -->
+  <section id="home" class="center">
 
 
-      <% if (!user) { %>
- 
-        <div class="buttons">
-          <a class="btn btn-outline-dark" href="/login" class="btn btn-default" data-aos="fade-up"><span class="fa-solid fa-right-from-bracket"></span> Вход</a>
-          <a class="btn btn-outline-dark" href="/signup" class="btn btn-default" data-aos="fade-up"><span class="fa-solid fa-user-plus"></span> Регистрация</a>
-        </div>
+
+
+
+
+
+    <% if (!user) { %>
+
+      <div class="buttons">
+        <a class="btn btn-outline-dark" href="/login" class="btn btn-default" data-aos="fade-up"><span
+            class="fa-solid fa-right-from-bracket"></span> Вход</a>
+        <a class="btn btn-outline-dark" href="/signup" class="btn btn-default" data-aos="fade-up"><span
+            class="fa-solid fa-user-plus"></span> Регистрация</a>
+      </div>
       <% } else { %>
-        
-        <p class="logo"><span><img src="uploads/1.png" alt="Лого" class="logo-imgr" style="width: 2cm; margin-bottom: 15px;"></span>Адвокатска кантора "Георгиеви"</p>
-          <div class="content">
-            <h3 data-aos="fade-down">Здравей, <%= user.username %>!</h3>
-         
+
+        <p class="logo"><span><img src="uploads/1.png" alt="Лого" class="logo-imgr"
+              style="width: 2cm; margin-bottom: 15px;"></span>Адвокатска кантора "Георгиеви"
+
+          <button id="reservationButton" class="rounded-circle"
+            style="animation: pulseAnimation 2s infinite; width: 70px; height: 70px; padding: 0; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-calendar-alt"></i> <!-- Изберете иконката, която желаете -->
+          </button>
+
+        </p>
+
+        <div class="content">
+          <h3 data-aos="fade-down">Здравей, <%= user.username %>!</h3>
+
           <div class="buttons">
-        <a class="btn btn-default btn-sm" href="/logout" class="btn btn-default" data-aos="fade-up"><span class="fa-solid fa-right-from-bracket"></span> Изход</a>
-        <a class="btn btn-default btn-sm" href="/profile" class="btn btn-default" data-aos="fade-up"><span class="fa-solid fa-user"></span> Моят профил</a>
-        <% if (user && user.role === 'admin') { %>
-          <a href="/admin/dashboard" class="btn btn-default"  data-aos="fade-up"><i class="fas fa-tachometer-alt"></i>Администраторски Панел</a>
-      <% } %>
-      
+            <a class="btn btn-default btn-sm" href="/logout" class="btn btn-default" data-aos="fade-up"><span
+                class="fa-solid fa-right-from-bracket"></span> Изход</a>
+            <a class="btn btn-default btn-sm" href="/profile" class="btn btn-default" data-aos="fade-up"><span
+                class="fa-solid fa-user"></span> Моят профил</a>
+            <% if (user && user.role==='admin' ) { %>
+              <a href="/admin/dashboard" class="btn btn-default" data-aos="fade-up"><i
+                  class="fas fa-tachometer-alt"></i>Администраторски Панел</a>
+              <% } %>
+
           </div>
         </div>
+
+
+        <!-- Модален Прозорец за Резервации -->
+        <div id="consultationReservationModal" class="consultation-modal">
+          <div class="consultation-modal-content">
+            <span class="consultation-close">&times;</span>
+            <h2 style="color: #000;">Запази час сега!</h2>
+            <form id="consultationReservationForm" style="color: #000;">
+
+              <input type="hidden" id="userId" name="userId">
+
+              <label for="first_name">Име:</label>
+              <input type="text" id="first_name" name="first_name" required readonly><br><br>
+
+              <label for="last_name">Фамилия:</label>
+              <input type="text" id="last_name" name="last_name" required readonly><br><br>
+
+              <label for="email">Имейл:</label>
+              <input type="email" id="email" name="email" required readonly><br><br>
+
+              <label for="phone_number">Телефон:</label>
+              <input type="tel" id="phone_number" name="phone_number" required readonly><br><br>
+
+              <label for="lawyer">Избор на адвокат:</label>
+              <select id="lawyer" name="lawyer">
+                <!-- Опции за адвокати заредени от база данни -->
+              </select><br><br>
+
+              <label for="appointmentDateTime">Дата и час:</label>
+              <input type="datetime-local" id="appointmentDateTime" name="appointmentDateTime" required><br><br>
+
+              <input type="submit" value="Запази">
+            </form>
+          </div>
+        </div>
+
 
         <!-- MENU OVERLAY -->
-<div class="overlay overlay-slide-left" id="overlay">
-  <!-- MENU ITEMS -->
-  <nav>
-    <ul>
-      <li id="nav-1" class="slide-out-1 center">
-        <a href="#home" class="center">Начало</a>
-      </li>
-      <li id="nav-2" class="slide-out-2 center">
-        <a href="#about" class="center">За нас</a>
-       
-      </li>
-      <li id="nav-3" class="slide-out-3 center">
-        <a href="#docs" class="center">Документи</a>
-      </li>
-      <li id="nav-4" class="slide-out-4 center">
-        <a href="#newsletter-and-news" class="center">Направи запитване</a>
-      </li>
-      <li id="nav-5" class="slide-out-5 center">
-        <a href="#contact" class="center">Контакти</a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<!-- HAMBURGER MENU -->
-<div class="hamburger-menu" id="hamburger-menu">
-  <div class="menu-bar1"></div>
-  <div class="menu-bar2"></div>
-  <div class="menu-bar3"></div>
-</div>
-      <% } %>
-      
+        <div class="overlay overlay-slide-left" id="overlay">
+          <!-- MENU ITEMS -->
+          <nav>
+            <ul>
+              <li id="nav-1" class="slide-out-1 center">
+                <a href="#home" class="center">Начало</a>
+              </li>
+              <li id="nav-2" class="slide-out-2 center">
+                <a href="#about" class="center">За нас</a>
 
-   
-
-</section>
-<% if (!user) { %>
-
-<% } else { %>
-
-  <section id="about"  class="team-section">
-    <div class="team-section-header">
-      <h2>Запознайте се с нашия екип</h2>
-    </div>
-    <div class="team-profiles-container" data-aos="fade-up" data-aos-duration="1000">
-      <div class="profile-item" data-aos="zoom-in" data-aos-delay="300">
-        <div class="profile-image">
-          <img src="uploads/2.png" alt="Христо Керезов">
+              </li>
+              <li id="nav-3" class="slide-out-3 center">
+                <a href="#docs" class="center">Документи</a>
+              </li>
+              <li id="nav-4" class="slide-out-4 center">
+                <a href="#newsletter-and-news" class="center">Направи запитване</a>
+              </li>
+              <li id="nav-5" class="slide-out-5 center">
+                <a href="#contact" class="center">Контакти</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <h3>Христо Керезов</h3>
-        <p>Трудовско право</p>
-      </div>
 
-      
-  
-      <!-- Профил на друг служител -->
-      <div class="profile-item" data-aos="zoom-in" data-aos-delay="600">
-        <div class="profile-imagee">
-          <img src="uploads/2.png" alt="Христо Керезов">
+        <!-- HAMBURGER MENU -->
+        <div class="hamburger-menu" id="hamburger-menu">
+          <div class="menu-bar1"></div>
+          <div class="menu-bar2"></div>
+          <div class="menu-bar3"></div>
         </div>
-        <h3>Христо Керезов</h3>
-        <p>Недвижими имоти</p>
-      </div>
-    </div>
+        <% } %>
 
 
-    <!-- Модал за визитка -->
-    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+
+
+  </section>
+  <% if (!user) { %>
+
+    <% } else { %>
+
+      <section id="about" class="team-section">
+        <div class="team-section-header">
+          <h2>Запознайте се с нашия екип</h2>
+        </div>
+        <div class="team-profiles-container" data-aos="fade-up" data-aos-duration="1000">
+          <div class="profile-item" data-aos="zoom-in" data-aos-delay="300">
+            <div class="profile-image">
+              <img src="uploads/2.png" alt="Христо Керезов">
+            </div>
+            <h3>Христо Керезов</h3>
+            <p>Трудовско право</p>
           </div>
-          <div class="modal-body">
-            <div class="card">
-              <div class="card-image">
-                <img src="uploads/2.png" alt="Снимка на служител" class="img-fluid">
+
+
+
+          <!-- Профил на друг служител -->
+          <div class="profile-item" data-aos="zoom-in" data-aos-delay="600">
+            <div class="profile-imagee">
+              <img src="uploads/2.png" alt="Христо Керезов">
+            </div>
+            <h3>Христо Керезов</h3>
+            <p>Недвижими имоти</p>
+          </div>
+        </div>
+
+
+        <!-- Модал за визитка -->
+        <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="card-content">
-                <h3>Христо Керезов</h3>
-                <p>Недвижими имоти</p>
-                <div class="contact-info">
-                  <p>Email: <a style="color: #000;" href="mailto:hristokerezov@yahoo.com">hristokerezov@yahoo.com</a></p>
-                  <p>Phone: <a style="color: #000;" href="tel:+359896884719">+359 896 884 719</a></p>
-                  <p>Experience: Повече от 10 години</p>
+              <div class="modal-body">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="uploads/2.png" alt="Снимка на служител" class="img-fluid">
+                  </div>
+                  <div class="card-content">
+                    <h3>Христо Керезов</h3>
+                    <p>Недвижими имоти</p>
+                    <div class="contact-info">
+                      <p>Email: <a style="color: #000;"
+                          href="mailto:hristokerezov@yahoo.com">hristokerezov@yahoo.com</a></p>
+                      <p>Phone: <a style="color: #000;" href="tel:+359896884719">+359 896 884 719</a></p>
+                      <p>Experience: Повече от 10 години</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
 
-<div class="modal fade" id="profileModall" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="card">
-          <div class="card-image">
-            <img src="uploads/2.png" alt="Снимка на служител" class="img-fluid">
-          </div>
-          <div class="card-content">
-            <h3>Христо Керезов</h3>
-            <p>Недвижими имоти</p>
-            <div class="contact-info">
-              <p>Email: <a style="color: #000;" href="mailto:hristokerezov@yahoo.com">hristokerezov@yahoo.com</a></p>
-              <p>Phone: <a style="color: #000;" href="tel:+359896884719">+359 896 884 719</a></p>
-              <p>Experience: Повече от 10 години</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-  </section>
-  
-  <section id="docs" class="docs-section">
-    <div class="container">
-      <h2 class="section-title" style="color: white;" data-aos="zoom-in">Документи и формуляри</h2>
-      <% if (user && user.role === 'admin') { %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal" data-aos="zoom-out">Качи нов документ</button>
-      <% } %>
-  
-      <% if (documents && documents.length > 0) { %>
-        <div class="documents-grid" data-aos="zoom-in">
-          <% documents.forEach(function(document) { %>
-              <a href="<%= document.path %>" download="<%= document.name %>">
-                  <div class="document-item">
-                      <div class="document-image">
-                        <p>"<%= document.imagePath %>"</p>
-                          <img src="\<%= document.imagePath %>" alt="<%= document.description %>">
-                      </div>
-                      <div class="document-info">
-                          <h5><%= document.description %></h5>
-                      </div>
+        <div class="modal fade" id="profileModall" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="uploads/2.png" alt="Снимка на служител" class="img-fluid">
                   </div>
-              </a>
-          <% }); %>
-      </div>
-      <% } else { %>
-        <p class="no-documents">Няма налични документи.</p>
-      <% } %>
-    </div>
-
-
-
-
-    
-    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="uploadModalLabel">Качване на документ</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+                  <div class="card-content">
+                    <h3>Христо Керезов</h3>
+                    <p>Недвижими имоти</p>
+                    <div class="contact-info">
+                      <p>Email: <a style="color: #000;"
+                          href="mailto:hristokerezov@yahoo.com">hristokerezov@yahoo.com</a></p>
+                      <p>Phone: <a style="color: #000;" href="tel:+359896884719">+359 896 884 719</a></p>
+                      <p>Experience: Повече от 10 години</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <form id="modalUploadForm" enctype="multipart/form-data" method="post">
-            <div class="modal-body">
-              <div class="form-group" style="color: #000;">
-                <label for="modalDocument">Избери документ</label>
-                <input type="file" class="form-control-file" id="modalDocument" name="document" required>
+        </div>
+      </section>
+
+      <section id="docs" class="docs-section">
+        <div class="container">
+          <h2 class="section-title" style="color: white;" data-aos="zoom-in">Документи и формуляри</h2>
+          <% if (user && user.role==='admin' ) { %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal"
+              data-aos="zoom-out">Качи нов документ</button>
+            <% } %>
+
+              <% if (documents && documents.length> 0) { %>
+                <div class="documents-grid" data-aos="zoom-in">
+                  <% documents.forEach(function(document) { %>
+                    <a href="<%= document.path %>" download="<%= document.name %>">
+                      <div class="document-item">
+                        <div class="document-image">
+                          <p>"<%= document.imagePath %>"</p>
+                          <img src="\<%= document.imagePath %>" alt="<%= document.description %>">
+                        </div>
+                        <div class="document-info">
+                          <h5>
+                            <%= document.description %>
+                          </h5>
+                        </div>
+                      </div>
+                    </a>
+                    <% }); %>
+                </div>
+                <% } else { %>
+                  <p class="no-documents">Няма налични документи.</p>
+                  <% } %>
+        </div>
+
+
+
+
+
+        <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Качване на документ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="form-group" style="color: #000;">
-                <label for="modalDocumentImage">Избери снимка за документа</label>
-                <input type="file" class="form-control-file" id="modalDocumentImage" name="documentImage" required>
+              <form id="modalUploadForm" enctype="multipart/form-data" method="post">
+                <div class="modal-body">
+                  <div class="form-group" style="color: #000;">
+                    <label for="modalDocument">Избери документ</label>
+                    <input type="file" class="form-control-file" id="modalDocument" name="document" required>
+                  </div>
+                  <div class="form-group" style="color: #000;">
+                    <label for="modalDocumentImage">Избери снимка за документа</label>
+                    <input type="file" class="form-control-file" id="modalDocumentImage" name="documentImage" required>
+                  </div>
+                  <div class="form-group " style="color: #000;">
+                    <label for="modalDescription">Описание на документа</label>
+                    <textarea class="form-control" id="modalDescription" name="description" rows="3"
+                      required></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
+                  <button type="submit" class="btn btn-primary">Качи документ</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+      <section id="newsletter-and-news" class="center">
+        <div class="container" data-aos="fade-right">
+          <div class="newsletter-section" data-aos="fade-up">
+            <h2 style="color: #000;">Абонирайте се за нашия правен бюлетин</h2>
+            <p style="color: #000;">Получавайте актуални правни новини и съвети директно във вашата кутия.</p>
+            <form id="newsletter-form">
+              <input type="email" name="email" placeholder="Вашият имейл адрес" required>
+              <button type="submit" class="btn btn-primary">Абонирай се</button>
+            </form>
+          </div>
+          <div class="news-section">
+            <h2 style="color: #000; text-decoration: underline;">Последни новини</h2>
+            <!-- Повтаряйте за всяка новина -->
+            <div class="news-item">
+              <h3 style="color: #000;">ВАС окончателно отхвърли жалба на бивша спецсъдийка, поискала преместване в
+                Търговското отделение на СГС</h3>
+              <p>Кратко описание на новината...</p>
+              <button class="btn btn-secondary" data-toggle="modal" data-target="#newsModal1">Прочети повече</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Модал за Новина 1 -->
+        <div class="modal fade" id="newsModal1" tabindex="-1" role="dialog" aria-labelledby="newsModalLabel1"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newsModalLabel1">Заглавие на новина 1</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="form-group " style="color: #000;">
-                <label for="modalDescription">Описание на документа</label>
-                <textarea class="form-control" id="modalDescription" name="description" rows="3" required></textarea>
+              <div class="modal-body">
+                <!-- Тук добавете съдържанието на новината, включително снимки -->
+                <img src="uploads/vas.jpg" class="img-fluid" alt="Новина">
+                <br>
+                <p style="color: #000;">Върховният административен съд (ВАС) окончателно остави без разглеждане жалба на
+                  бивша спецсъдийка срещу отказа на Съдийската колегия да я премести конкретно в Търговското отделение
+                  на Софийския градски съд (СГС).</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
-              <button type="submit" class="btn btn-primary">Качи документ</button>
+          </div>
+        </div>
+
+      </section>
+
+
+
+
+
+
+
+
+
+
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 contact-info" data-aos="fade-right">
+              <h2>Свържете се с нас</h2>
+              <p class="contact-description">Ако имате въпроси или нужда от помощ, нашият екип е готов да Ви помогне.
+              </p>
+              <p class="contact-phone"><strong>Телефон:</strong> +359 88 216 4927</p>
+              <p class="contact-email"><strong>Email:</strong> hristokerezov05@gmail.com</p>
+              <p class="contact-adress"><strong>Адрес:</strong> Център, ул. "Димитър Благоев" 4Б, 6500 Свиленград</p>
+              <div class="map-container" data-aos="fade-up">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2944.418258120366!2d26.193692515954316!3d41.77022797923158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b2cf46159cefd5%3A0xeca508f608ce0095!2z0JHQtdC-0LPRgNCw0LQg0JjQstCw0YDQvtCy0LAg0JTQvtGA0L7QttCwINC_0LXRgNC-0LLQsNC90L4g0YbQtdC90YLRgA!5e0!3m2!1sbg!2sbg!4v1659108003652!5m2!1sbg!2sbg"
+                  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+              </div>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  
 
-  
+            <div class="col-md-6 contact-form" data-aos="fade-left">
+              <h2 style="color: #ffffff; outline: black 10px;   -webkit-text-stroke-width: 0.3px;
+          -webkit-text-stroke-color: black;">Направи запитване</h2>
+              <form id="consultation-form" method="POST" action="/send-consultation">
+                <input type="text" name="name" placeholder="Вашите имена" required>
+                <input type="text" name="phone" placeholder="Телефон за контакт" required>
 
-
-
-
-  <section id="newsletter-and-news" class="center" >
-    <div class="container" data-aos="fade-right" >
-      <div class="newsletter-section" data-aos="fade-up">
-        <h2 style="color: #000;">Абонирайте се за нашия правен бюлетин</h2>
-        <p style="color: #000;">Получавайте актуални правни новини и съвети директно във вашата кутия.</p>
-        <form id="newsletter-form">
-          <input type="email" name="email" placeholder="Вашият имейл адрес" required>
-          <button type="submit" class="btn btn-primary">Абонирай се</button>
-        </form>
-      </div>
-      <div class="news-section">
-        <h2 style="color: #000; text-decoration: underline;">Последни новини</h2>
-        <!-- Повтаряйте за всяка новина -->
-        <div class="news-item">
-          <h3 style="color: #000;">ВАС окончателно отхвърли жалба на бивша спецсъдийка, поискала преместване в Търговското отделение на СГС</h3>
-          <p>Кратко описание на новината...</p>
-          <button class="btn btn-secondary" data-toggle="modal" data-target="#newsModal1">Прочети повече</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Модал за Новина 1 -->
-<div class="modal fade" id="newsModal1" tabindex="-1" role="dialog" aria-labelledby="newsModalLabel1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newsModalLabel1">Заглавие на новина 1</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Тук добавете съдържанието на новината, включително снимки -->
-        <img src="uploads/vas.jpg" class="img-fluid" alt="Новина">
-        <br>
-        <p style="color: #000;">Върховният административен съд (ВАС) окончателно остави без разглеждане жалба на бивша спецсъдийка срещу отказа на Съдийската колегия да я премести конкретно в Търговското отделение на Софийския градски съд (СГС).</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  </section>
-  
-
-
-
-
-
-
-
-
-    
-  </section>
-  
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 contact-info" data-aos="fade-right">
-          <h2>Свържете се с нас</h2>
-          <p class="contact-description">Ако имате въпроси или нужда от помощ, нашият екип е готов да Ви помогне.</p>
-          <p class="contact-phone"><strong>Телефон:</strong> +359 88 216 4927</p>
-          <p class="contact-email"><strong>Email:</strong> hristokerezov05@gmail.com</p>
-          <p class="contact-adress"><strong>Адрес:</strong> Център, ул. "Димитър Благоев" 4Б, 6500 Свиленград</p>
-          <div class="map-container" data-aos="fade-up">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2944.418258120366!2d26.193692515954316!3d41.77022797923158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b2cf46159cefd5%3A0xeca508f608ce0095!2z0JHQtdC-0LPRgNCw0LQg0JjQstCw0YDQvtCy0LAg0JTQvtGA0L7QttCwINC_0LXRgNC-0LLQsNC90L4g0YbQtdC90YLRgA!5e0!3m2!1sbg!2sbg!4v1659108003652!5m2!1sbg!2sbg"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
-            </div>
-        </div>
-        
-        <div class="col-md-6 contact-form" data-aos="fade-left">
-          <h2 style = "color: #ffffff; outline: black 10px;   -webkit-text-stroke-width: 0.3px;
-          -webkit-text-stroke-color: black;">ОНЛАЙН КОНСУЛТАЦИЯ</h2>
-          <form id="consultation-form" method="POST" action="/send-consultation">
-            <input type="text" name="name" placeholder="Вашите имена" required>
-            <input type="text" name="phone" placeholder="Телефон за контакт" required>
-
-            <input type="email" name="emailConsult" placeholder="Имейл адрес" required>
-            <select name="inquiry" required>
-              <option value="">Нуждаете се от:</option>
-              <option value="legal_advice">Правна помощ</option>
-            </select>
-            <textarea name="additional_info" placeholder="Какъв е вашият казус?"></textarea>
-            <div class="checkbox">
-              <input type="checkbox" name="consent" required> 
-              <label style = "color: #ffffff; outline: black 10px;   -webkit-text-stroke-width: 0.3px;
+                <input type="email" name="emailConsult" placeholder="Имейл адрес" required>
+                <select name="inquiry" required>
+                  <option value="">Нуждаете се от:</option>
+                  <option value="legal_advice">Правна помощ</option>
+                </select>
+                <textarea name="additional_info" placeholder="Какъв е вашият казус?"></textarea>
+                <div class="checkbox">
+                  <input type="checkbox" name="consent" required>
+                  <label style="color: #ffffff; outline: black 10px;   -webkit-text-stroke-width: 0.3px;
               -webkit-text-stroke-color: black;">Съгласен съм данните ми да бъдат обработвани...</label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">ИЗПРАТИ</button>
+              </form>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">ИЗПРАТИ</button> 
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  
+      </section>
 
-  <% } %>
+
+      <% } %>
 
 
 
 
 
-<script>
+        <script>
+
+
+          document.addEventListener('DOMContentLoaded', function () {
+
+            fetch('/api/profile')
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then(userProfile => {
+
+
+                if (userProfile) {
+                  document.getElementById('userId').value = userProfile.user_id;
+                  document.getElementById('first_name').value = userProfile.first_name || '';
+                  document.getElementById('last_name').value = userProfile.last_name || '';
+                  document.getElementById('email').value = userProfile.email || '';
+                  document.getElementById('phone_number').value = userProfile.phone_number || '';
+                  console.log(userProfile.userId);
+                  console.log(userProfile);
+                }
+              })
+              .catch(error => {
+                console.error('Error fetching profile:', error);
+              });
+
+
+            const closeModal = document.querySelector('.consultation-close');
+            closeModal.onclick = function () {
+              document.getElementById('consultationReservationModal').style.display = 'none';
+            };
+
+            document.getElementById('consultationReservationForm').addEventListener('submit', function (e) {
+              e.preventDefault();
+
+
+              const formData = {
+                userId: document.getElementById('userId').value,
+                lawyerId: document.getElementById('lawyer').value,
+                first_name: document.getElementById('first_name').value,
+                last_name: document.getElementById('last_name').value,
+                email: document.getElementById('email').value,
+                phone_number: document.getElementById('phone_number').value,
+
+                lawyerId: document.getElementById('lawyer').value,
+                appointmentDateTime: document.getElementById('appointmentDateTime').value
+              };
+              console.log(formData);
 
 
 
 
-$(document).ready(function() {
-    // Обработка на изпращането на формата за качване на документи
-    $('#uploadModal form').on('submit', function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
 
-        $.ajax({
-            url: '/upload',
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                showCustomAlert('Документът беше успешно качен.');
-                $('#uploadModal').modal('hide'); // Затваряне на модала след успешно качване
-                window.location.reload(); // Презареждане на страницата за актуализация на списъка с документи
-            },
-            error: function() {
-                showCustomAlert('Възникна грешка при качването на документа.');
+
+
+              fetch('/consultations', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+              })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  console.log('Success:', data);
+                  alert('Консултацията е успешно резервирана!');
+                  document.getElementById('consultationReservationModal').style.display = 'none';
+
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                  alert('Възникна грешка при резервация на консултация.');
+                });
+            });
+          });
+
+
+
+
+          document.addEventListener('DOMContentLoaded', (event) => {
+            fetch('/admin/lawyers')
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then(data => {
+                const selectElement = document.getElementById('lawyer');
+                data.forEach(lawyer => {
+                  const option = new Option(lawyer.firstName + ' ' + lawyer.lastName, lawyer.id);
+                  selectElement.appendChild(option);
+                });
+              })
+              .catch(error => console.error('There has been a problem with your fetch operation:', error));
+          });
+
+
+          document.addEventListener('DOMContentLoaded', (event) => {
+            const modal = document.getElementById('consultationReservationModal');
+            const btn = document.getElementById('reservationButton');
+            const span = document.getElementsByClassName('consultation-close')[0];
+
+            btn.onclick = function () {
+              modal.style.display = 'block';
+              document.body.classList.add("body-no-scroll");
             }
-        });
-    });
-});
 
-
-
-
-// $('#uploadForm').on('submit', function(e) {
-//     e.preventDefault();
-//     var formData = new FormData(this);
-
-//     $.ajax({
-//         url: '/upload',
-//         type: 'POST',
-//         data: formData,
-//         contentType: false,
-//         processData: false,
-//         success: function(response) {
-//           showCustomAlert('Документът беше успешно качен.');
-//             window.location.reload(); 
-//         },
-//         error: function() {
-//           showCustomAlert('Възникна грешка при качването на документа.');
-//         }
-//     });
-// });
-
-$('.documents-list').on('click', '.btn-delete', function() {
-    var docId = $(this).data('doc-id');
-    if (confirm('Сигурни ли сте, че искате да изтриете този документ?')) {
-        $.ajax({
-            url: '/delete/' + docId,
-            type: 'DELETE',
-            success: function(result) {
-                    showCustomAlert('Документът беше успешно изтрит.');
-                window.location.reload(); // Презарежда страницата за актуализация
-            },
-            error: function(err) {
-              showCustomAlert('Възникна грешка при изтриването на документа.');
+            span.onclick = function () {
+              modal.style.display = 'none';
+              document.body.classList.remove("body-no-scroll");
             }
-        });
-    }
-});
+
+            window.onclick = function (event) {
+              if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.classList.remove("body-no-scroll");
+              }
+            }
+          });
+
+
+
+          $(document).ready(function () {
+            $('#uploadModal form').on('submit', function (e) {
+              e.preventDefault();
+              var formData = new FormData(this);
+
+              $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                  showCustomAlert('Документът беше успешно качен.');
+                  $('#uploadModal').modal('hide');
+                  window.location.reload();
+                },
+                error: function () {
+                  showCustomAlert('Възникна грешка при качването на документа.');
+                }
+              });
+            });
+          });
+
+
+
+          $('.documents-list').on('click', '.btn-delete', function () {
+            var docId = $(this).data('doc-id');
+            if (confirm('Сигурни ли сте, че искате да изтриете този документ?')) {
+              $.ajax({
+                url: '/delete/' + docId,
+                type: 'DELETE',
+                success: function (result) {
+                  showCustomAlert('Документът беше успешно изтрит.');
+                  window.location.reload();
+                },
+                error: function (err) {
+                  showCustomAlert('Възникна грешка при изтриването на документа.');
+                }
+              });
+            }
+          });
+
+
+
+
+          $(document).ready(function () {
+            $('#newsletter-form').submit(function (e) {
+              e.preventDefault();
+              var form = $(this);
+              var email = form.find('input[name="email"]').val();
+
+              $.ajax({
+                url: '/subscribe',
+                type: 'POST',
+                data: JSON.stringify({ email: email }),
+                contentType: 'application/json',
+                success: function (response) {
+
+                  showCustomAlert('Благодарим Ви, че се абонирахте за нашия правен бюлетин!');
+                  form[0].reset();
+                  window.scrollTo(0, 0);
+                },
+                error: function (xhr, status, error) {
+                  var errorMessage = xhr.status === 400 ? 'Този имейл вече е абониран.' : 'Възникна грешка при абонамент. Моля, опитайте отново.';
+                  showCustomAlert(errorMessage);
+                  form[0].reset();
+                  window.scrollTo(0, 0);
+                }
+              });
+            });
+          });
+
+
+
+
+          $(document).ready(function () {
+            $('#consultation-form').on('submit', function (e) {
+              e.preventDefault();
+
+              var name = $('input[name="name"]').val();
+
+              var phone = $('input[name="phone"]').val();
+
+              var email = $('input[name="emailConsult"]').val();
+
+              console.log(email + "1213");
+              var additionalInfo = $('textarea[name="additional_info"]').val();
+              var consent = $('input[name="consent"]').is(':checked');
+
+
+              if (!validateName(name)) {
+                showCustomAlert('Моля, въведете коректно име (пр. Иван Иванов).');
+                return;
+              }
+
+              if (!validatePhone(phone)) {
+                showCustomAlert('Телефонният номер трябва да започва с +359 и да е 10 цифрен. (пр. +359 88xx xxx)');
+                return;
+              }
+
+              if (!validateEmail(email)) {
+                showCustomAlert('Моля, въведете валиден имейл адрес. (пр. ivan.ivanov@abv.bg)');
+                return;
+              }
+
+              if (!additionalInfo.trim()) {
+                showCustomAlert('Моля, въведете допълнителна информация.');
+                return;
+              }
+
+              if (!consent) {
+                showCustomAlert('Трябва да дадете съгласие за обработка на данните.');
+                return;
+              }
+
+
+              $.ajax({
+                type: "POST",
+                url: "/send-consultation",
+                data: {
+                  name: $('input[name="name"]').val(),
+                  phone: $('input[name="phone"]').val(),
+                  email: $('input[name="emailConsult"]').val(),
+                  inquiry: $('select[name="inquiry"]').val(),
+                  additional_info: $('textarea[name="additional_info"]').val(),
+                  consent: $('input[name="consent"]').is(':checked')
+                },
+                success: function (response) {
+
+                  showCustomAlert('Вашата заявка е изпратена успешно. Благодарим Ви!');
+                  $('#consultation-form').trigger("reset");
+                  // $('html, body').animate({ scrollTop: 0 }, 'slow');
+                  // window.scrollTo({ top: 0, behavior: 'smooth' });
+
+
+                },
+                error: function (xhr, status, error) {
+
+                  showCustomAlert('Възникна грешка при изпращането на заявката. Моля, опитайте отново по-късно.');
+                }
+              });
+            });
+          });
+
+          function validateName(name) {
+
+            return /^[А-Яа-я\s]+$/.test(name);
+          }
+
+          function validatePhone(phone) {
+
+            return /^\+359\d{9}$/.test(phone);
+          }
+
+          function validateEmail(email) {
+
+            return /\S+@\S+\.\S+/.test(email);
+          }
+
+
+
+
+          function showCustomAlert(message) {
+            document.getElementById('customAlertMessage').textContent = message;
+            document.getElementById('customAlertBox').style.display = 'block';
+          }
+
+          function closeCustomAlert() {
+            document.getElementById('customAlertBox').style.display = 'none';
+          }
 
 
 
 
 
 
+          AOS.init({
+            duration: 800,
+            easing: 'slide',
+            once: false,
+          });
+
+          const hamburgerMenu = document.querySelector("#hamburger-menu");
+          const overlay = document.querySelector("#overlay");
+          const nav1 = document.querySelector("#nav-1");
+          const nav2 = document.querySelector("#nav-2");
+          const nav3 = document.querySelector("#nav-3");
+          const nav4 = document.querySelector("#nav-4");
+          const nav5 = document.querySelector("#nav-5");
+          const navItems = [nav1, nav2, nav3, nav4, nav5];
 
 
+          function navAnimation(val1, val2) {
+            navItems.forEach((nav, i) => {
+              nav.classList.replace(`slide-${val1}-${i + 1}`, `slide-${val2}-${i + 1}`);
+            });
+          }
+
+          function toggleNav() {
+
+            hamburgerMenu.classList.toggle("active");
 
 
+            overlay.classList.toggle("overlay-active");
+
+            if (overlay.classList.contains("overlay-active")) {
+
+              overlay.classList.replace("overlay-slide-left", "overlay-slide-right");
 
 
+              navAnimation("out", "in");
+            } else {
+
+              overlay.classList.replace("overlay-slide-right", "overlay-slide-left");
 
 
+              navAnimation("in", "out");
+            }
+          }
 
 
+          hamburgerMenu.addEventListener("click", toggleNav);
+          navItems.forEach((nav) => {
+            nav.addEventListener("click", toggleNav);
+          });
 
 
+          $(document).ready(function () {
+            $('.profile-image').on('click', function () {
 
+              $('#profileModal').modal('show');
+            });
+          });
 
+          $(document).ready(function () {
+            $('.profile-imagee').on('click', function () {
 
-$(document).ready(function() {
-  $('#newsletter-form').submit(function(e) {
-    e.preventDefault();
-    var form = $(this);
-    var email = form.find('input[name="email"]').val();
+              $('#profileModall').modal('show');
+            });
+          });
 
-    $.ajax({
-      url: '/subscribe',
-      type: 'POST',
-      data: JSON.stringify({ email: email }),
-      contentType: 'application/json',
-      success: function(response) {
-        // Покажете съобщение за успех
-        showCustomAlert('Благодарим Ви, че се абонирахте за нашия правен бюлетин!');
-        form[0].reset(); // Изчистване на формата
-        window.scrollTo(0, 0); // Пренасочване към началото на страницата
-      },
-      error: function(xhr, status, error) {
-        var errorMessage = xhr.status === 400 ? 'Този имейл вече е абониран.' : 'Възникна грешка при абонамент. Моля, опитайте отново.';
-        showCustomAlert(errorMessage);
-        form[0].reset(); 
-        window.scrollTo(0, 0); 
-      }
-    });
-  });
-});
-
-
-
-
-$(document).ready(function() {
-    $('#consultation-form').on('submit', function(e) {
-        e.preventDefault(); // Предотвратяваме стандартното поведение на формата
-        // Вземаме стойностите от формата
-        var name = $('input[name="name"]').val();
-       
-        var phone = $('input[name="phone"]').val();
-        
-        var email = $('input[name="emailConsult"]').val();
-
-        console.log(email+"1213");
-        var additionalInfo = $('textarea[name="additional_info"]').val();
-        var consent = $('input[name="consent"]').is(':checked');
-
-        // Валидация на данните
-        if (!validateName(name)) {
-            showCustomAlert('Моля, въведете коректно име (пр. Иван Иванов).');
-            return;
-        }
-
-        if (!validatePhone(phone)) {
-            showCustomAlert('Телефонният номер трябва да започва с +359 и да е 10 цифрен. (пр. +359 88xx xxx)');
-            return;
-        }
-
-        if (!validateEmail(email)) {
-            showCustomAlert('Моля, въведете валиден имейл адрес. (пр. ivan.ivanov@abv.bg)');
-            return;
-        }
-
-        if (!additionalInfo.trim()) {
-            showCustomAlert('Моля, въведете допълнителна информация.');
-            return;
-        }
-
-        if (!consent) {
-            showCustomAlert('Трябва да дадете съгласие за обработка на данните.');
-            return;
-        }
-
-        
-$.ajax({
-    type: "POST", // Метода на заявката
-    url: "/send-consultation", // URL на endpoint-а, към който се изпраща заявката
-    data: {
-        name: $('input[name="name"]').val(),
-        phone: $('input[name="phone"]').val(),
-        email: $('input[name="emailConsult"]').val(),
-        inquiry: $('select[name="inquiry"]').val(),
-        additional_info: $('textarea[name="additional_info"]').val(),
-        consent: $('input[name="consent"]').is(':checked')
-    },
-    success: function(response) {
-        // Това се изпълнява при успешна заявка
-        showCustomAlert('Вашата заявка е изпратена успешно. Благодарим Ви!');
-        $('#consultation-form').trigger("reset");
-        // $('html, body').animate({ scrollTop: 0 }, 'slow');
-        // window.scrollTo({ top: 0, behavior: 'smooth' });
-
-
-    },
-    error: function(xhr, status, error) {
-        // Това се изпълнява при възникнала грешка при заявката
-        showCustomAlert('Възникна грешка при изпращането на заявката. Моля, опитайте отново по-късно.');
-    }
-});
-    });
-});
-
-function validateName(name) {
-    // Регулярен израз за валидация само на български букви и интервали
-    return /^[А-Яа-я\s]+$/.test(name);
-}
-
-function validatePhone(phone) {
-    // Регулярен израз за +359 следвано от 9 цифри
-    return /^\+359\d{9}$/.test(phone);
-}
-
-function validateEmail(email) {
- 
-    return /\S+@\S+\.\S+/.test(email);
-}
-
-
-
-
-function showCustomAlert(message) {
-    document.getElementById('customAlertMessage').textContent = message;
-    document.getElementById('customAlertBox').style.display = 'block';
-}
-
-function closeCustomAlert() {
-    document.getElementById('customAlertBox').style.display = 'none';
-}
-
-
-
-
-
-
-AOS.init({
-  duration: 800, // дължината на анимацията в милисекунди
-  easing: 'slide', // тип на анимацията
-  once: false, // анимация при всяко скролиране
-});
-
-const hamburgerMenu = document.querySelector("#hamburger-menu");
-const overlay = document.querySelector("#overlay");
-const nav1 = document.querySelector("#nav-1");
-const nav2 = document.querySelector("#nav-2");
-const nav3 = document.querySelector("#nav-3");
-const nav4 = document.querySelector("#nav-4");
-const nav5 = document.querySelector("#nav-5");
-const navItems = [nav1, nav2, nav3, nav4, nav5];
-
-// Control Navigation Animation
-function navAnimation(val1, val2) {
-  navItems.forEach((nav, i) => {
-    nav.classList.replace(`slide-${val1}-${i + 1}`, `slide-${val2}-${i + 1}`);
-  });
-}
-
-function toggleNav() {
-  // Toggle: Hamburger Open/Close
-  hamburgerMenu.classList.toggle("active");
-
-  //   Toggle: Menu Active
-  overlay.classList.toggle("overlay-active");
-
-  if (overlay.classList.contains("overlay-active")) {
-    // Animate In - Overlay
-    overlay.classList.replace("overlay-slide-left", "overlay-slide-right");
-
-    // Animate In - Nav Items
-    navAnimation("out", "in");
-  } else {
-    // Animate Out - Overlay
-    overlay.classList.replace("overlay-slide-right", "overlay-slide-left");
-
-    // Animate Out - Nav Items
-    navAnimation("in", "out");
-  }
-}
-
-// Events Listeners
-hamburgerMenu.addEventListener("click", toggleNav);
-navItems.forEach((nav) => {
-  nav.addEventListener("click", toggleNav);
-});
-
-
-$(document).ready(function() {
-  $('.profile-image').on('click', function() {
-    // При клик върху снимката на профила отворете модала
-    $('#profileModal').modal('show');
-  });
-});
-
-$(document).ready(function() {
-  $('.profile-imagee').on('click', function() {
-    // При клик върху снимката на профила отворете модала
-    $('#profileModall').modal('show');
-  });
-});
-
-</script>
-<script src="https://kit.fontawesome.com/952f439974.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        </script>
+        <script src="https://kit.fontawesome.com/952f439974.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 
 
 </body>
+
 </html>

@@ -45,8 +45,8 @@ const UserProfile = sequelize.define(
         }
     },
     {
-        tableName: 'profiles', // Изрично посочваме името на таблицата
-        timestamps: false // Изключваме автоматичното създаване на полетата "createdAt" и "updatedAt"
+        tableName: 'profiles',
+        timestamps: false 
     }
 );
 

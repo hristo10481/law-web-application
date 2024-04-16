@@ -1,6 +1,5 @@
 // models/consultation.js
 
-
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../config/db.js");
 
@@ -12,7 +11,7 @@ const Consultation = sequelize.define('consultation', {
     additional_info: Sequelize.TEXT,
     consent: Sequelize.BOOLEAN
 }, {
-    timestamps: false // Изключва автоматичното генериране на createdAt и updatedAt
+    timestamps: false 
 });
 
 

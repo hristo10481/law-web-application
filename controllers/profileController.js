@@ -1,11 +1,6 @@
 // controllers/profileController.js
 const UserProfile = require('../models/userModel');
-
-
-// Във вашата функция getProfile
-// Предполагаме, че имате модел за потребителя с име User
-const User = require('../models/usersTableModel'); // Пътят до модела може да се различава
-
+const User = require('../models/usersTableModel');
 
 exports.getProfile = async (req, res) => {
   try {
@@ -17,7 +12,7 @@ exports.getProfile = async (req, res) => {
       profile = {
         first_name: "",
         last_name: "",
-        email: user.email, // Вземаме email от таблицата `users`
+        email: user.email,
         phone_number: "",
       };
     }
@@ -29,12 +24,32 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-  
+exports.getProfileData = async (userId) => {
+  try {
+    let profile = await UserProfile.findOne({ where: { user_id: userId } });
+    const user = await User.findByPk(userId);
+
+    if (!profile) {
+      profile = {
+        first_name: "",
+        last_name: "",
+        email: user ? user.email : "",
+        phone_number: "",
+      };
+    }
+
+    return profile;
+  } catch (error) {
+    console.error('Fetching profile failed:', error);
+    throw error;
+  }
+};
+
 exports.updateOrCreateProfile = async (req, res) => {
 
   const userId = req.user.id;
   const { first_name, last_name, email, phone_number } = req.body;
-console.log(req.body);
+  console.log(req.body);
   try {
     const [profile, created] = await UserProfile.findOrCreate({
       where: { user_id: userId },

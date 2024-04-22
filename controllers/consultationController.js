@@ -16,10 +16,12 @@ const transporter = nodemailer.createTransport({
 
 exports.sendConsultation = async (req, res) => {
     try {
-        const { name, phone, email, inquiry, additional_info, consent } = req.body;
+       
+        const { userId, name, phone, email, inquiry, additional_info, consent } = req.body;
         console.log(req.body);
 
         const consultation = await Consultation.create({
+            userId,
             name,
             phone,
             email,

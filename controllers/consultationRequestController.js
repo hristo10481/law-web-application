@@ -55,7 +55,7 @@ exports.getAllConsultations = async (req, res) => {
             ]
 
         });
-        console.log(consultations);  // Добавете този ред за дебъгване
+        console.log(consultations);
 
         res.status(200).send(consultations);
     } catch (error) {

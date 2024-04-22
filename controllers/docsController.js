@@ -59,8 +59,8 @@ exports.deleteDocument = async (req, res) => {
         if (!document) {
             return res.status(404).send({ message: "Document not found" });
         }
-        // Изтриване на файл от файловата система или облачно хр
-        fs.unlinkSync(document.path); // За локално съхранени файлове
+       
+        fs.unlinkSync(document.path); 
         await Document.destroy({ where: { id } });
         res.status(200).send({ message: "Document deleted successfully" });
     } catch (error) {

@@ -57,7 +57,6 @@ exports.updateOrCreateProfile = async (req, res) => {
     });
 
     if (!created) {
-      // Ако профилът вече съществува, актуализирайте го
       await UserProfile.update(
         { first_name, last_name, email, phone_number },
         { where: { user_id: userId } }

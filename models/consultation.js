@@ -4,6 +4,18 @@ const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../config/db.js");
 
 const Consultation = sequelize.define('consultation', {
+    userId: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        allowNull: true,
+        
+
+            references: {
+                model: 'users',
+                tableName: 'users',
+                key: 'id',
+              }
+        
+    },
     name: Sequelize.STRING,
     phone: Sequelize.STRING,
     email: Sequelize.STRING,

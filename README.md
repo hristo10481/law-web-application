@@ -1,4 +1,55 @@
-# Law Site Diplom Project
+# Law Web Platform Project
+
+# EN
+
+## Description
+This is a web application for a legal information system, developed with Node.js, using Express for the backend and EJS for page templates.
+
+## Prerequisites
+To start and work with this project, you need to have Node.js installed. You can download Node.js from the [official website](https://nodejs.org/).
+
+## Installation
+
+1. Clone the repository or download and unzip the ZIP archive.
+2. Open a terminal and navigate to the project directory:
+
+    ```bash
+    cd path/to/law-website-diplom
+    ```
+
+3. Install all necessary dependencies using NPM:
+
+    ```bash
+    npm install
+    ```
+
+## Configuration
+The project uses MySQL for database management. You need to create a database and configure your `config` file with the following parameters:
+- Host
+- User
+- Password
+- Database Name
+
+## Starting the Project
+To start the application server, run the following command in the terminal:
+
+    ```bash
+    npm start
+    ```
+
+This will start the Node.js server, and the application will be accessible at `http://localhost:8080`.
+
+## Development
+You can modify the code according to your needs by editing the files in the `views`, `controllers`, and `models` directories.
+
+## Support
+For questions and support, please contact the project developer.
+
+
+
+
+# BG
+
 
 ## Описание
 Това е уеб приложение за правна информационна система, разработено с Node.js, използващо Express за бекенд и EJS за шаблони на страници.

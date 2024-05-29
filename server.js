@@ -50,4 +50,5 @@ require('./routes/routes.js')(app, passport);
 
 // launch
 app.listen(port);
-console.log('The magic happens on port ' + port);
+console.log('Сървърът е стартиран на порт ' + port);
+console.log('Може да отворите приложенито от ТУК -> http://localhost:8080/')

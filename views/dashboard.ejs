@@ -48,6 +48,9 @@
             background-color: #f44336;
             
         }
+
+
+        
     </style>
 </head>
 
@@ -59,7 +62,7 @@
         </div>
 
         <h3 style="text-align: center;">Потребители</h3>
-        <table class="table">
+        <table class="table table-responsive-md">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -110,7 +113,7 @@
         <h3 style="text-align: center;">Адвокати</h3>
         <button class="btn btn-success mb-3" data-toggle="modal" data-target="#addLawyerModal">Добави Адвокат</button>
 
-        <table class="table">
+        <table class="table table-responsive-md">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -207,12 +210,12 @@
                 </div>
             </div>
         </div>
-    </div>
+   
 
 
 
     <h3 style="text-align: center;">Консултации</h3>
-    <table class="table">
+    <table class="table table-responsive-md">
         <thead>
             <tr>
                 <th>ID</th>
@@ -230,7 +233,7 @@
     </table>
 
 
-
+</div>
 
 
 
@@ -285,7 +288,7 @@
                 consultations.forEach(function (consultation) {
                     
                     var userName = consultation.userModel ? consultation.userModel.first_name : 'Unknown';
-                     var userPhone = consultation.userModel ? consultation.userModel.phone_number : 'No phone';
+                    var userPhone = consultation.userModel ? consultation.userModel.phone_number : 'No phone';
     
 
                     $('#consultationsList').append(`

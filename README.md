@@ -1,6 +1,6 @@
 # Law Web Platform Project
 
-#EN
+# EN
 
 ## Description
 This is a web application for a legal information system, developed with Node.js, using Express for the backend and EJS for page templates.
@@ -48,9 +48,8 @@ For questions and support, please contact the project developer.
 
 
 
-#BG
+# BG
 
-# Law Site Diplom Project
 
 ## Описание
 Това е уеб приложение за правна информационна система, разработено с Node.js, използващо Express за бекенд и EJS за шаблони на страници.
